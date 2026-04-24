@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\PolicyController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\StoreConfigController;
 use App\Http\Controllers\Api\ThemeController;
+use App\Http\Controllers\Api\CmsController;
 use App\Http\Controllers\Api\SeoController;
 use App\Http\Controllers\Api\SwatchController;
 
@@ -83,15 +84,21 @@ Route::prefix('stores/{storeId}')->group(function () {
     Route::get('/customer/orders', [CustomerController::class, 'orders']);
     Route::get('/customer/orders/{orderId}', [CustomerController::class, 'order']);
 
-    // 11. CMS (functional — real DB read/write)
+    // 11. CMS — legacy routes (used by BraveCart Studio)
     Route::get('/theme/page', [ThemeController::class, 'getPage']);
     Route::post('/theme/page', [ThemeController::class, 'savePage']);
     Route::get('/theme/settings', [ThemeController::class, 'getSettings']);
     Route::post('/theme/settings', [ThemeController::class, 'saveSettings']);
 
-    // 12. SEO
+    // 12. CMS — SDK v2 routes (used by BraveCart SDK / start-kit)
+    Route::post('/cms/pages', [CmsController::class, 'loadPage']);
+    Route::get('/cms/theme-settings', [CmsController::class, 'themeSettings']);
+    Route::get('/cms/translations', [CmsController::class, 'translations']);
+    Route::get('/cms/custom-pages', [CmsController::class, 'customPages']);
+
+    // 13. SEO
     Route::get('/robots.txt', [SeoController::class, 'robots']);
 
-    // 13. Swatches
+    // 14. Swatches
     Route::get('/swatches', [SwatchController::class, 'index']);
 });

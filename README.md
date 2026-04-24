@@ -228,7 +228,20 @@ All endpoints are prefixed with `/api`. Store-scoped endpoints use `/api/stores/
 | GET | `/api/stores/{id}/customer/orders` | Mock customer orders |
 | GET | `/api/stores/{id}/customer/orders/{orderId}` | Mock single order |
 
-#### CMS (Functional)
+#### CMS — SDK v2 Routes (used by start-kit / storefront)
+
+These endpoints match the URL patterns that `BraveCartClient` in `@codemadinc/theme-sdk-v2` calls.
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/stores/{id}/cms/pages` | Load page layout. Body: `{ projectId, params: { type, handle, locale } }`. Returns `{ page, project, pageAssignment }`. |
+| GET | `/api/stores/{id}/cms/theme-settings` | Fetch theme settings. Returns `{ theme: {...} }`. |
+| GET | `/api/stores/{id}/cms/translations?locale={locale}` | Merchant translation overrides. Returns `{}` (empty for mock). |
+| GET | `/api/stores/{id}/cms/custom-pages?locale=&limit=&cursor=` | Custom pages for sitemap. Returns `{ data: [...], nextCursor }`. |
+
+#### CMS — Legacy Studio Routes
+
+These endpoints are used by the BraveCart Studio visual editor. They remain unchanged.
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -286,7 +299,8 @@ app/
       PolicyController.php     # Store policies
       CustomerController.php   # Mock customer data
       StoreConfigController.php # Domain detection
-      ThemeController.php      # CMS page layouts + theme settings
+      ThemeController.php      # CMS page layouts + theme settings (legacy studio routes)
+      CmsController.php        # CMS SDK v2 routes (/cms/pages, /cms/theme-settings, etc.)
       SeoController.php        # Robots.txt
       SwatchController.php     # Color swatches
     Middleware/

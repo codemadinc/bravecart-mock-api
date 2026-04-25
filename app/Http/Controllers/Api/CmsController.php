@@ -52,12 +52,35 @@ class CmsController extends Controller
         }
 
         // Build HydrogenPageData
+        // The SDK expects:
+        //   - rootId references an item in the items array
+        //   - That root item has type: 'main'
+        //   - Child items have parentId pointing to the root item's id
         if ($page) {
+            $rootId = 'root-' . $page->id;
+            $rawItems = $page->items ?? [];
+
+            // Wrap existing items inside a 'main' root container.
+            // Set each child's parentId to the root so the SDK tree resolves.
+            $children = array_map(function ($item) use ($rootId) {
+                $item['parentId'] = $rootId;
+                return $item;
+            }, $rawItems);
+
+            // Prepend the root 'main' item
+            $rootItem = [
+                'id' => $rootId,
+                'type' => 'main',
+                'parentId' => null,
+                'data' => [],
+            ];
+            $allItems = array_merge([$rootItem], $children);
+
             $pageData = [
                 'id' => (string) $page->id,
                 'name' => $type . ($handle ? " — {$handle}" : ''),
-                'rootId' => 'root-' . $page->id,
-                'items' => $page->items ?? [],
+                'rootId' => $rootId,
+                'items' => $allItems,
                 'updatedAt' => $page->updated_at?->toIso8601String(),
             ];
         } else {
@@ -67,7 +90,14 @@ class CmsController extends Controller
                 'id' => $fallbackId,
                 'name' => $type . ' (fallback)',
                 'rootId' => $fallbackId,
-                'items' => [],
+                'items' => [
+                    [
+                        'id' => $fallbackId,
+                        'type' => 'main',
+                        'parentId' => null,
+                        'data' => [],
+                    ],
+                ],
             ];
         }
 

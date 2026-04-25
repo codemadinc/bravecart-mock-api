@@ -30,6 +30,11 @@ class SwatchSeeder extends Seeder
             ['name' => 'Heather Gray', 'color' => '#B6B6B4'],
             ['name' => 'Green', 'color' => '#006400'],
             ['name' => 'Gray', 'color' => '#808080'],
+            // New colors for expanded product range
+            ['name' => 'Cream', 'color' => '#FFFDD0'],
+            ['name' => 'Slate', 'color' => '#708090'],
+            ['name' => 'Washed Black', 'color' => '#3B3B3B'],
+            ['name' => 'Dark Brown', 'color' => '#4A2C2A'],
         ];
 
         foreach ($swatches as $swatchData) {

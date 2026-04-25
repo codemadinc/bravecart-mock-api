@@ -19,7 +19,7 @@ class CollectionSeeder extends Seeder
                 'image_url' => 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop',
                 'image_alt_text' => 'New Arrivals Collection',
                 'seo' => ['title' => 'New Arrivals | Pilot Demo Store', 'description' => 'Shop the latest arrivals.'],
-                'product_handles' => ['classic-oxford-shirt', 'linen-summer-shirt', 'cashmere-scarf', 'canvas-sneakers'],
+                'product_handles' => ['classic-oxford-shirt', 'linen-summer-shirt', 'cashmere-scarf', 'canvas-sneakers', 'heavyweight-hoodie', 'suede-chelsea-boots'],
             ],
             [
                 'title' => 'Bestsellers',
@@ -29,7 +29,7 @@ class CollectionSeeder extends Seeder
                 'image_url' => 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&h=600&fit=crop',
                 'image_alt_text' => 'Bestsellers Collection',
                 'seo' => ['title' => 'Bestsellers | Pilot Demo Store', 'description' => 'Shop our bestselling products.'],
-                'product_handles' => ['classic-oxford-shirt', 'organic-cotton-tshirt', 'slim-fit-chinos', 'leather-weekend-bag'],
+                'product_handles' => ['classic-oxford-shirt', 'organic-cotton-tshirt', 'slim-fit-chinos', 'leather-weekend-bag', 'leather-card-holder'],
             ],
             [
                 'title' => 'Tops',
@@ -39,7 +39,7 @@ class CollectionSeeder extends Seeder
                 'image_url' => 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=1200&h=600&fit=crop',
                 'image_alt_text' => 'Tops Collection',
                 'seo' => ['title' => 'Tops | Pilot Demo Store', 'description' => 'Shop shirts, sweaters, and t-shirts.'],
-                'product_handles' => ['classic-oxford-shirt', 'merino-wool-sweater', 'organic-cotton-tshirt', 'linen-summer-shirt'],
+                'product_handles' => ['classic-oxford-shirt', 'merino-wool-sweater', 'organic-cotton-tshirt', 'linen-summer-shirt', 'heavyweight-hoodie'],
             ],
             [
                 'title' => 'Outerwear',
@@ -59,7 +59,7 @@ class CollectionSeeder extends Seeder
                 'image_url' => 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&h=600&fit=crop',
                 'image_alt_text' => 'Accessories Collection',
                 'seo' => ['title' => 'Accessories | Pilot Demo Store', 'description' => 'Shop bags, belts, scarves, and eyewear.'],
-                'product_handles' => ['leather-weekend-bag', 'leather-belt', 'sunglasses-aviator', 'cashmere-scarf'],
+                'product_handles' => ['leather-weekend-bag', 'leather-belt', 'sunglasses-aviator', 'cashmere-scarf', 'leather-card-holder'],
             ],
             [
                 'title' => 'Sale',
@@ -69,7 +69,27 @@ class CollectionSeeder extends Seeder
                 'image_url' => 'https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1200&h=600&fit=crop',
                 'image_alt_text' => 'Sale Collection',
                 'seo' => ['title' => 'Sale | Pilot Demo Store', 'description' => 'Shop our sale items.'],
-                'product_handles' => ['classic-oxford-shirt', 'leather-weekend-bag', 'linen-summer-shirt'],
+                'product_handles' => ['classic-oxford-shirt', 'leather-weekend-bag', 'linen-summer-shirt', 'heavyweight-hoodie'],
+            ],
+            [
+                'title' => 'Bottoms',
+                'handle' => 'bottoms',
+                'description' => 'Pants, chinos, and joggers for every style.',
+                'description_html' => '<p>Pants, chinos, and joggers for every style.</p>',
+                'image_url' => 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=1200&h=600&fit=crop',
+                'image_alt_text' => 'Bottoms Collection',
+                'seo' => ['title' => 'Bottoms | Pilot Demo Store', 'description' => 'Shop pants, chinos, and joggers.'],
+                'product_handles' => ['slim-fit-chinos', 'relaxed-fit-joggers'],
+            ],
+            [
+                'title' => 'Footwear',
+                'handle' => 'footwear',
+                'description' => 'Sneakers, boots, and shoes crafted for comfort and style.',
+                'description_html' => '<p>Sneakers, boots, and shoes crafted for comfort and style.</p>',
+                'image_url' => 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=1200&h=600&fit=crop',
+                'image_alt_text' => 'Footwear Collection',
+                'seo' => ['title' => 'Footwear | Pilot Demo Store', 'description' => 'Shop sneakers, boots, and shoes.'],
+                'product_handles' => ['canvas-sneakers', 'suede-chelsea-boots'],
             ],
         ];
 

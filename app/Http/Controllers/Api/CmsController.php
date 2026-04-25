@@ -61,9 +61,12 @@ class CmsController extends Controller
             $rawItems = $page->items ?? [];
 
             // Wrap existing items inside a 'main' root container.
-            // Set each child's parentId to the root so the SDK tree resolves.
+            // Only top-level items (parentId === null) get re-parented to the root.
+            // Child items keep their original parentId to preserve the component tree.
             $children = array_map(function ($item) use ($rootId) {
-                $item['parentId'] = $rootId;
+                if (empty($item['parentId']) || $item['parentId'] === null) {
+                    $item['parentId'] = $rootId;
+                }
                 return $item;
             }, $rawItems);
 

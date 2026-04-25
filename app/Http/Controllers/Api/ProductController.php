@@ -20,6 +20,12 @@ class ProductController extends Controller
             ->where('status', 'ACTIVE')
             ->with('variants');
 
+        // Filter by IDs: ?ids=1,2,3
+        if ($ids = $request->input('ids')) {
+            $idList = array_map('intval', explode(',', $ids));
+            $query->whereIn('id', $idList);
+        }
+
         // Search by query string
         if ($q = $request->input('query')) {
             $query->where(function ($qb) use ($q) {

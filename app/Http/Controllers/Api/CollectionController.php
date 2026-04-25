@@ -14,9 +14,17 @@ class CollectionController extends Controller
      * GET /api/stores/{storeId}/collections
      * All collections list.
      */
-    public function index(int $storeId): JsonResponse
+    public function index(Request $request, int $storeId): JsonResponse
     {
-        $collections = Collection::where('store_id', $storeId)->get();
+        $query = Collection::where('store_id', $storeId);
+
+        // Filter by IDs: ?ids=1,2,3
+        if ($ids = $request->input('ids')) {
+            $idList = array_map('intval', explode(',', $ids));
+            $query->whereIn('id', $idList);
+        }
+
+        $collections = $query->get();
 
         $nodes = $collections->map(fn($c) => ShopifyFormatter::collection($c, false))->values()->all();
 
